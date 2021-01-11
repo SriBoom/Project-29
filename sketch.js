@@ -46,7 +46,9 @@ function setup(){
 
   block6 = new Box(953, 130, 30, 30);
   block7 = new Box(984, 130, 30, 30);
-  block8 = new Box(1104, 130, 30, 30);
+  block8 = new Box(1015, 130, 30, 30);
+
+  block9 = new Box(984, 80, 30, 30);
 
   polygon = Bodies.circle(50, 200, 20);
   World.add(world, polygon);
@@ -85,6 +87,7 @@ fill("white")
   block6.display(); 
   block7.display();
   block8.display();
+  block9.display();
 }
 
 function mouseDragged(){
@@ -93,4 +96,10 @@ function mouseDragged(){
 
 function mouseReleased(){
 slingShot.fly();
+}
+
+function keyPressed(){
+  if(keyCode === 32){
+     slingshot.attach(polygon.body);
+  }
 }
