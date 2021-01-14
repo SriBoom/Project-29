@@ -18,7 +18,7 @@ function setup(){
   
   engine = Engine.create();
   world = engine.world;
-
+  Engine.run(engine);
   ground = new Ground(50, 400, 2400, 100);
   stand1 = new Ground(400, 300, 200, 10);
   stand2 = new Ground(1000, 200, 200, 10);
@@ -53,17 +53,15 @@ function setup(){
   polygon = Bodies.circle(50, 200, 20);
   World.add(world, polygon);
 
-  slingShot = new SlingShot(this.polygon, {x: 100, y:200});
+  slingShot = new Slingshot(this.polygon, {x: 100, y:200});
 
 }
 
 function draw(){
   background("green");
-  Engine.update(engine);
+  //Engine.update(engine);
 
-fill("white")
- imageMode(CENTER)
- image(polygonImage, polygon.position.x, polygon.position.y, 40, 40);
+
 
 
   ground.display();
@@ -88,10 +86,15 @@ fill("white")
   block7.display();
   block8.display();
   block9.display();
+ 
+  fill("white")
+ imageMode(CENTER)
+ image(polygonImage, polygon.position.x, polygon.position.y, 40, 40);
+ slingShot.display();
 }
 
 function mouseDragged(){
-  Matter.Body.setPosition(polygon.body, {x:mouseX, y:mouseY});
+  Matter.Body.setPosition(this.polygon, {x:mouseX, y:mouseY});
 }
 
 function mouseReleased(){
